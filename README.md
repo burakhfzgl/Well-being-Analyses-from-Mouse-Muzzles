@@ -1,3 +1,8 @@
+go to notebooks/well_being_classification.ipynb, you can run the code
+directly.
+
+Install the packages by command: make install
+
 
 1. Project overview
 2. Directory structure
