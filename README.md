@@ -14,6 +14,7 @@
 
 
 ## Project Structure
+```text
 PROJECT_CV/
 ├── README.md
 ├── requirements.txt
@@ -65,3 +66,4 @@ PROJECT_CV/
 │   └── paper/
 │
 └── Makefile# cv_software
+```
