@@ -13,15 +13,8 @@ from sklearn.metrics import (
 
 
 def get_default_device():
-    """
-    Return the best available PyTorch device.
-    Priority: Apple Silicon MPS -> CUDA -> CPU.
-    """
-    return torch.device(
-        "mps" if torch.backends.mps.is_available()
-        else "cuda" if torch.cuda.is_available()
-        else "cpu"
-    )
+    """Return the best available PyTorch device."""
+    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def get_validation_predictions(
@@ -72,7 +65,7 @@ def plot_probability_distribution(
     positive_label_name="True impaired",
     negative_label_name="True well-being",
     bins=20,
-    show=True,
+    show=False,
 ):
     """
     Plot predicted probability distribution for class 0 and class 1.

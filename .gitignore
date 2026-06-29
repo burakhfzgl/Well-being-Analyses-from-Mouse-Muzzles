@@ -1,12 +1,41 @@
 venv/
+.venv/
+env/
+
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
 .DS_Store
 .vscode/
-data/images
-data/
-data/raw/
-docs/
-outputs/models/*.pt
-outputs/**/*.png
-outputs/**/*.csv
+.idea/
+
+# Local datasets and Windows junctions. Keep dataset/README.md tracked.
+dataset/*
+!dataset/README.md
+mouse_dataset/
+notebooks/mouse_dataset/
+*.zip
+*.rar
+*.7z
+
+# Generated training/evaluation artifacts.
+outputs/
+output/
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.hdf5
+**/report_output/
+**/muzzle_crops*/
+**/usable_mgs_images.csv
+
+# Notebook/editor artifacts.
+.ipynb_checkpoints/
+
+# Legacy root-level local data path.
+/data/

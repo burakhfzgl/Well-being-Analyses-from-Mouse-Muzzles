@@ -1,12 +1,15 @@
 from pathlib import Path
+
 from PIL import Image, ImageOps, ImageDraw, ImageFilter
 import random
 import math
 
+from paths import FIGURES_DIR, IMAGES_PERFECT_DIR
+
 
 def make_image_brick_wall(
     image_dir,
-    output_path="output/image_brick_wall.png",
+    output_path=None,
     n_images=30,
     tile_size=100,
     gap=18,
@@ -14,19 +17,10 @@ def make_image_brick_wall(
     background=(245, 245, 245),
     seed=45
 ):
-    """
-    从 image_dir 随机抽图片，生成适合放入 PPT 的砖块式图片墙。
+    """Create a reproducible image wall from randomly sampled images."""
 
-    参数:
-        image_dir: 图片文件夹路径，例如 "images"
-        output_path: 输出图片路径
-        n_images: 随机抽多少张图片
-        tile_size: 每个小方块大小
-        gap: 方块之间距离
-        cols: 每行多少张
-        background: 背景颜色
-        seed: 随机种子，保证每次结果可复现
-    """
+    if output_path is None:
+        output_path = FIGURES_DIR / "image_brick_wall.png"
 
     random.seed(seed)
 
@@ -60,20 +54,18 @@ def make_image_brick_wall(
         x = gap + col * (tile_size + gap)
         y = gap + row * (tile_size + gap)
 
-        # 轻微随机偏移，让它不那么死板
+        # Slight offset gives the wall a less rigid look.
         x += random.randint(-5, 5)
         y += random.randint(-5, 5)
 
         img = Image.open(img_path).convert("RGB")
 
-        # 中心裁剪成正方形
         img = ImageOps.fit(
             img,
             (tile_size, tile_size),
             method=Image.Resampling.LANCZOS
         )
 
-        # 阴影，制造“凸起砖块”效果
         shadow_offset = 8
         shadow = Image.new("RGBA", (tile_size, tile_size), (0, 0, 0, 90))
         shadow = shadow.filter(ImageFilter.GaussianBlur(8))
@@ -86,20 +78,22 @@ def make_image_brick_wall(
             shadow_layer
         ).convert("RGB")
 
-        # 白色边框
         bordered = ImageOps.expand(img, border=5, fill="white")
 
         canvas.paste(bordered, (x, y))
 
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(output_path, quality=95)
     print(f"Saved to {output_path}")
 
 
-make_image_brick_wall(
-    image_dir="mouse_dataset/images_perfect",
-    output_path="output/image_perfect_brick_wall.png",
-    n_images=70,
-    tile_size=120,
-    gap=16,
-    cols=10
-)
+if __name__ == "__main__":
+    make_image_brick_wall(
+        image_dir=IMAGES_PERFECT_DIR,
+        output_path=FIGURES_DIR / "image_perfect_brick_wall.png",
+        n_images=70,
+        tile_size=120,
+        gap=16,
+        cols=10,
+    )

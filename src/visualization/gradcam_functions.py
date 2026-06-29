@@ -12,7 +12,7 @@ Typical usage after training:
         val_df=val_df,
         dataset_class=MouseDataset,
         target_layer=model.features[-1][-1].block[-1],
-        output_dir="output/gradcam_muzzle_only",
+        output_dir=GRADCAM_DIR / "muzzle_only",
         num_images=50,
         transform=val_tfms,
         class_names=["well-being", "impaired"]
@@ -32,6 +32,8 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
+
+from paths import GRADCAM_DIR
 
 
 DEFAULT_IMAGENET_MEAN = (0.485, 0.456, 0.406)
@@ -233,7 +235,7 @@ def save_gradcam_for_index(
     index: int,
     device: Union[str, torch.device],
     gradcam: GradCAM,
-    output_dir: Union[str, Path] = "output/gradcam",
+    output_dir: Union[str, Path] = GRADCAM_DIR,
     target_class: Optional[int] = None,
     class_names: Sequence[str] = ("well-being", "impaired"),
     mean: Sequence[float] = DEFAULT_IMAGENET_MEAN,
@@ -342,7 +344,7 @@ def visualize_gradcam(
     val_df,
     dataset_class,
     target_layer: torch.nn.Module,
-    output_dir: Union[str, Path] = "output/gradcam",
+    output_dir: Union[str, Path] = GRADCAM_DIR,
     num_images: int = 50,
     transform: Optional[Callable] = None,
     build_transforms_fn: Optional[Callable] = None,
@@ -557,7 +559,7 @@ def visualize_gradcam_from_dataset(
     model: torch.nn.Module,
     dataset,
     target_layer: torch.nn.Module,
-    output_dir: Union[str, Path] = "output/gradcam",
+    output_dir: Union[str, Path] = GRADCAM_DIR,
     num_images: int = 50,
     device: Optional[Union[str, torch.device]] = None,
     target_class: Optional[int] = None,

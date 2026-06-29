@@ -2,14 +2,16 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 
+from paths import IMAGENET_MEAN, IMAGENET_STD
+
 
 def denormalize(img_tensor):
     """
     Undo ImageNet normalization for visualization.
     img_tensor: shape [3, H, W]
     """
-    mean = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
-    std = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
+    mean = torch.tensor(IMAGENET_MEAN).view(3, 1, 1)
+    std = torch.tensor(IMAGENET_STD).view(3, 1, 1)
 
     img = img_tensor.cpu() * std + mean
     img = torch.clamp(img, 0, 1)
@@ -76,7 +78,8 @@ def show_saliency(model, dataset, index, device, target_class=None, class_names=
 
     plt.subplot(1, 3, 1)
     plt.imshow(img)
-    plt.title(f"Original\nTrue: {class_names[true_label]}")
+    true_idx = int(true_label)
+    plt.title(f"Original\nTrue: {class_names[true_idx]}")
     plt.axis("off")
 
     plt.subplot(1, 3, 2)

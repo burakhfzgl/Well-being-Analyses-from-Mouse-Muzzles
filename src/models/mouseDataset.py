@@ -1,23 +1,8 @@
-from PIL import Image
-from torch.utils.data import Dataset
-import torch
+"""Backward-compatible dataset import.
 
-class MouseDataset(Dataset):
-    def __init__(self, df, transform=None):
-        self.df = df.reset_index(drop=True)
-        self.transform = transform
+New code should import `MouseImageDataset` from `data.dataset`.
+"""
 
-    def __len__(self):
-        return len(self.df)
+from data.dataset import MouseDataset, MouseImageDataset
 
-    def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-
-        img = Image.open(row["path"]).convert("RGB")
-
-        if self.transform:
-            img = self.transform(img)
-
-        label = torch.tensor(row["label"], dtype=torch.long)
-
-        return img, label
+__all__ = ["MouseDataset", "MouseImageDataset"]

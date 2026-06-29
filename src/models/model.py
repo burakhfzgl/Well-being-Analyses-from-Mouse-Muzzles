@@ -1,17 +1,5 @@
-import torch.nn as nn
-from torchvision import models
+"""Backward-compatible model builders."""
 
-def build_convnext_tiny(num_classes=2, pretrained=True):
-    if pretrained:
-        weights = models.ConvNeXt_Tiny_Weights.DEFAULT
-    else:
-        weights = None
+from models.convnext import build_convnext_tiny
 
-    model = models.convnext_tiny(weights=weights)
-
-    model.classifier[2] = nn.Linear(
-        model.classifier[2].in_features,
-        num_classes
-    )
-
-    return model
+__all__ = ["build_convnext_tiny"]

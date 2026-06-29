@@ -16,11 +16,11 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 # ============================================================
-# Config - 修改这里即可
+# Config
 # ============================================================
-MAIN_CSV = Path("mouse_dataset/MouseGrimaceFaces_main.csv")
-MGS_CSV = Path("mouse_dataset/MouseGrimaceFaces_mgs.csv")
-OUTPUT_DIR = Path("mouse_dataset/report_output")
+from paths import MAIN_CSV, MGS_CSV, REPORTS_DIR
+
+OUTPUT_DIR = REPORTS_DIR / "mouse_dataset"
 PDF_NAME = "mouse_dataset_exploration_report.pdf"
 
 # If you run this script outside your project root, set absolute paths, e.g.:
