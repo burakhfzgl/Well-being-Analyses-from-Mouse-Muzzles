@@ -1,1 +1,1 @@
-"""Mouse muzzle impairment classification package."""
+"""Mouse muzzle computer vision package."""

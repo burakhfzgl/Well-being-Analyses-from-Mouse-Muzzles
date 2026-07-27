@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import matplotlib
@@ -16,16 +15,16 @@ import pandas as pd
 import torch
 from PIL import Image
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-SRC_DIR = PROJECT_ROOT / "src"
-TRAINING_DIR = SRC_DIR / "training"
-for path in (SRC_DIR, TRAINING_DIR):
-    if str(path) not in sys.path:
-        sys.path.insert(0, str(path))
-
-from balanced_device import LABEL_NAMES, build_loaders, build_model, config_from_dict, pil_to_tensor, predict  # noqa: E402
-from paths import FIGURES_DIR, IMAGENET_MEAN, IMAGENET_STD, REPORTS_DIR  # noqa: E402
-from utils.device import get_device  # noqa: E402
+from src.paths import FIGURES_DIR, IMAGENET_MEAN, IMAGENET_STD, REPORTS_DIR
+from src.train import (
+    LABEL_NAMES,
+    build_loaders,
+    build_model,
+    config_from_dict,
+    pil_to_tensor,
+    predict,
+)
+from src.device import get_device
 
 ARTICLE_REPORTS_DIR = REPORTS_DIR / "article_experiments"
 ARTICLE_FIGURES_DIR = FIGURES_DIR / "article_experiments"

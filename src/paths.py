@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
+# src/paths.py -> repo root
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-# Local dataset (contents ignored by Git; see dataset/README.md).
 MOUSE_DATASET_DIR = PROJECT_ROOT / "dataset" / "mouse_dataset"
 
 MGS_CSV = MOUSE_DATASET_DIR / "MouseGrimaceFaces_mgs.csv"

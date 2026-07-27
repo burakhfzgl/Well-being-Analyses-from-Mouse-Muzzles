@@ -1,43 +1,39 @@
 PYTHON ?= python
 
-.PHONY: install install-cuda check prepare dry-run part1 part2 summarize diagrams tables figures gradcam curves
+.PHONY: install check prepare dry-run part1 part2 summarize diagrams tables figures gradcam curves
 
 install:
 	$(PYTHON) -m pip install -r requirements.txt
 
-install-cuda:
-	$(PYTHON) -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
-	$(PYTHON) -m pip install -r requirements.txt
-
 check:
-	$(PYTHON) scripts/data_processing/check_setup.py
+	$(PYTHON) main.py --mode check
 
 prepare:
-	$(PYTHON) scripts/data_processing/prepare_organized_dataset.py
+	$(PYTHON) main.py --mode prepare
 
 dry-run:
-	$(PYTHON) scripts/training/run_article_experiments.py --part all --dry-run
+	$(PYTHON) main.py --mode train --part all --dry-run
 
 part1:
-	$(PYTHON) scripts/training/run_article_experiments.py --part part1
+	$(PYTHON) main.py --mode train --part part1
 
 part2:
-	$(PYTHON) scripts/training/run_article_experiments.py --part part2
+	$(PYTHON) main.py --mode train --part part2
 
 summarize:
-	$(PYTHON) scripts/evaluation/summarize_article_experiments.py
+	$(PYTHON) main.py --mode summarize
 
 diagrams:
-	$(PYTHON) scripts/analysis/generate_report_diagrams.py
+	$(PYTHON) main.py --mode diagrams
 
 tables:
-	$(PYTHON) scripts/analysis/generate_result_table_figures.py
+	$(PYTHON) main.py --mode tables
 
 figures:
-	$(PYTHON) scripts/analysis/generate_qualitative_visualizations.py --part all
+	$(PYTHON) main.py --mode figures
 
 gradcam:
-	$(PYTHON) scripts/analysis/generate_gradcam_visualizations.py
+	$(PYTHON) main.py --mode gradcam
 
 curves:
-	$(PYTHON) scripts/analysis/generate_training_curves.py
+	$(PYTHON) main.py --mode curves

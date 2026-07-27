@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mouse-muzzle"
+version = "1.0.0"
+description = "PyTorch ablation study for mouse muzzle impairment classification"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pandas",
+  "Pillow",
+  "scikit-learn",
+  "matplotlib",
+  "tqdm",
+  "torch",
+  "torchvision",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

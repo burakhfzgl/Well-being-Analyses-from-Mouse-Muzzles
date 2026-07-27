@@ -1,3 +1,7 @@
+# Prefer editable install from pyproject.toml:
+#   pip install -e .
+#
+# This file mirrors the runtime dependencies for convenience.
 numpy
 pandas
 Pillow

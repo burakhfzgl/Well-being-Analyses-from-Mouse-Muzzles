@@ -81,20 +81,23 @@ These figures show correct and incorrect test examples with model attention over
 
 ```text
 .
-├── dataset/                  # Local data (not committed); see dataset/README.md
-├── results/                  # Final Part 1 / Part 2 tables and report figures
-├── scripts/
-│   ├── data_processing/      # Setup check and dataset preparation
-│   ├── training/             # Part 1 / Part 2 experiment runner
-│   ├── evaluation/           # Result table summarization
-│   └── analysis/             # Tables, diagrams, curves, saliency, Grad-CAM
-├── src/
-│   ├── data/                 # Label construction and folder organization
-│   ├── training/             # Training loop, metrics, and per-run plots
-│   └── utils/                # Device and reproducibility helpers
-├── outputs/                  # Local run artifacts (ignored by Git)
+├── main.py                   # CONFIG + pipeline entry point
 ├── requirements.txt
-└── Makefile
+├── dataset/                  # Local data (not committed)
+├── results/                  # Final Part 1 / Part 2 tables and figures
+├── outputs/                  # Local run artifacts (ignored by Git)
+├── scripts/analysis/         # Report figure generators
+└── src/
+    ├── paths.py              # Project paths
+    ├── device.py             # CUDA / device helpers
+    ├── reproducibility.py    # Seeding
+    ├── preprocess.py         # MGS labels + organize crops
+    ├── prepare.py            # Dataset preparation runner
+    ├── check_setup.py        # Environment / data checks
+    ├── model.py              # ResNet18 / ConvNeXt builders
+    ├── train.py              # Training loop, metrics, plots
+    ├── experiments.py        # Part 1 / Part 2 experiment grid
+    └── summarize.py          # Result table aggregation
 ```
 
 ## Setup
@@ -136,43 +139,33 @@ dataset/mouse_dataset/
 └── images_perfect/      # Cropped images
 ```
 
-Then prepare the organized crop dataset and verify the environment:
+Then prepare and verify:
 
 ```bash
-python scripts/data_processing/prepare_organized_dataset.py
-python scripts/data_processing/check_setup.py
+python main.py --mode prepare
+python main.py --mode check
 ```
 
 ## Reproducing Experiments
 
-Preview the experiment plan:
+Edit `CONFIG` in `main.py`, or override from the CLI:
 
 ```bash
-python scripts/training/run_article_experiments.py --part all --dry-run
+python main.py --mode train --part all --dry-run
+python main.py --mode train --part part1
+python main.py --mode train --part part2
+python main.py --mode train --part all --only resnet18_original_light_lr5e5
 ```
 
-Run Part 1 (architecture / input / augmentation) or Part 2 (tuning):
+Regenerate tables and figures:
 
 ```bash
-python scripts/training/run_article_experiments.py --part part1
-python scripts/training/run_article_experiments.py --part part2
-```
-
-Run a single configuration:
-
-```bash
-python scripts/training/run_article_experiments.py --part all --only resnet18_original_light_lr5e5
-```
-
-Regenerate tables and figures from completed runs:
-
-```bash
-python scripts/evaluation/summarize_article_experiments.py
-python scripts/analysis/generate_result_table_figures.py
-python scripts/analysis/generate_report_diagrams.py
-python scripts/analysis/generate_training_curves.py
-python scripts/analysis/generate_qualitative_visualizations.py --part all
-python scripts/analysis/generate_gradcam_visualizations.py
+python main.py --mode summarize
+python main.py --mode tables
+python main.py --mode diagrams
+python main.py --mode curves
+python main.py --mode figures
+python main.py --mode gradcam
 ```
 
 Or use Make:

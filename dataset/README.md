@@ -1,19 +1,17 @@
 # Dataset Layout
 
-This repository does not commit Mouse Grimace Faces images. Keep data locally under this folder when running experiments.
+Keep Mouse Grimace Faces data locally (not committed):
 
 ```text
 dataset/mouse_dataset/
 ├── MouseGrimaceFaces_main.csv
 ├── MouseGrimaceFaces_mgs.csv
-├── images_mgs/                 # Original full images
-├── images_perfect/             # Curated cropped images
-└── images_perfect_organized/   # Built by prepare_organized_dataset.py
+├── images_mgs/
+├── images_perfect/
+└── images_perfect_organized/   # built by: python main.py --mode prepare
 ```
 
-Only this `README.md` is tracked by Git. Image folders and generated labels are ignored.
-
 ```bash
-python scripts/data_processing/prepare_organized_dataset.py
-python scripts/data_processing/check_setup.py
+python main.py --mode prepare
+python main.py --mode check
 ```
