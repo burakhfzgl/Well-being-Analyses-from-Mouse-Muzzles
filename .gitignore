@@ -22,7 +22,7 @@ notebooks/mouse_dataset/
 *.rar
 *.7z
 
-# Generated training/evaluation artifacts.
+# Generated training/evaluation artifacts. Curated CSV tables live in results/.
 outputs/
 output/
 *.pt
@@ -36,6 +36,3 @@ output/
 
 # Notebook/editor artifacts.
 .ipynb_checkpoints/
-
-# Legacy root-level local data path.
-/data/

@@ -1,0 +1,9 @@
+run_name,model,input,augmentation,accuracy,recall,macro_f1,roc_auc
+resnet18_original_light,ResNet18,full,light,0.831,0.83,0.83,0.89
+convnext_tiny_crop_light,ConvNeXt-Tiny,crop,light,0.797,0.797,0.797,0.849
+convnext_tiny_original_noaug,ConvNeXt-Tiny,full,none,0.797,0.797,0.797,0.851
+convnext_tiny_original_light,ConvNeXt-Tiny,full,light,0.797,0.797,0.796,0.859
+convnext_tiny_crop_noaug,ConvNeXt-Tiny,crop,none,0.789,0.79,0.789,0.846
+resnet18_original_noaug,ResNet18,full,none,0.774,0.774,0.773,0.838
+resnet18_crop_light,ResNet18,crop,light,0.759,0.759,0.759,0.852
+resnet18_crop_noaug,ResNet18,crop,none,0.737,0.737,0.737,0.82

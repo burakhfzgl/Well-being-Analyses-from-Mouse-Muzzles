@@ -1,14 +1,15 @@
-"""Training utilities."""
+"""Training package for the Part 1 / Part 2 ablation study."""
 
-from .engine import TrainConfig, build_dataloaders, evaluate, evaluate_with_probs, run_training, train_one_epoch
-from .split import make_group_split
+from .balanced_device import (
+    BalancedDeviceConfig,
+    build_model,
+    config_from_dict,
+    run_balanced_device_training,
+)
 
 __all__ = [
-    "TrainConfig",
-    "build_dataloaders",
-    "evaluate",
-    "evaluate_with_probs",
-    "make_group_split",
-    "run_training",
-    "train_one_epoch",
+    "BalancedDeviceConfig",
+    "build_model",
+    "config_from_dict",
+    "run_balanced_device_training",
 ]

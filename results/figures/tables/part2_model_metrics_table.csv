@@ -1,0 +1,7 @@
+Model,Variant,Accuracy,Recall,Macro F1,ROC AUC
+ResNet18,"full, lr=5e-05, dropout=0.3, frozen=no",0.838,0.838,0.838,0.883
+ConvNeXt-Tiny,"crop, lr=0.0001, dropout=0.0, frozen=no",0.812,0.812,0.812,0.857
+ConvNeXt-Tiny,"crop, lr=5e-05, dropout=0.3, frozen=no",0.805,0.804,0.804,0.886
+ConvNeXt-Tiny,"crop, lr=0.0003, dropout=0.3, frozen=yes",0.778,0.778,0.778,0.849
+ConvNeXt-Tiny,"crop, lr=0.0003, dropout=0.3, frozen=no",0.771,0.771,0.771,0.825
+ConvNeXt-Tiny,"crop, lr=0.0001, dropout=0.1, frozen=no",0.771,0.770,0.770,0.828

@@ -1,5 +1,4 @@
-"""Model builders."""
+"""Model builders used by the Part 1 / Part 2 training pipeline.
 
-from .convnext import build_convnext_tiny
-
-__all__ = ["build_convnext_tiny"]
+Supported models: ResNet18 and ConvNeXt-Tiny (see training.balanced_device.build_model).
+"""

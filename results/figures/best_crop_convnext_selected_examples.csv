@@ -1,0 +1,5 @@
+index,subset,true_label,predicted_label,impaired_probability,path,label_name,split
+028576.jpg,MR,0,0,1.1255942666821285e-07,D:\projects\mouse_muzzle\Mouse_muzzle\dataset\mouse_dataset\images_perfect_organized\MR\not_impaired\028576.jpg,not_impaired,test
+016171.jpg,MR,0,0,1.3843843760241725e-07,D:\projects\mouse_muzzle\Mouse_muzzle\dataset\mouse_dataset\images_perfect_organized\MR\not_impaired\016171.jpg,not_impaired,test
+006838.jpg,KH,0,1,0.9999996423721312,D:\projects\mouse_muzzle\Mouse_muzzle\dataset\mouse_dataset\images_perfect_organized\KH\not_impaired\006838.jpg,not_impaired,test
+002927.jpg,JW,0,1,0.9999994039535522,D:\projects\mouse_muzzle\Mouse_muzzle\dataset\mouse_dataset\images_perfect_organized\JW\not_impaired\002927.jpg,not_impaired,test
