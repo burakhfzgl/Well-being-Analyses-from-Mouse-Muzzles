@@ -1,6 +1,11 @@
 # Mouse Muzzle Impairment Classification
 
 Deep learning ablation study for binary mouse welfare classification from facial images. Models predict **impaired** vs **not impaired** using Mouse Grimace Scale (MGS) scores as labels, comparing cropped muzzle images against full-face images and testing how architecture, augmentation, and training choices affect performance.
+## Author
+Qingyun Chen   
+Email: qingyun.chen@campus.tu-berlin.de   
+Burak Hafizoglu    
+Email: burak.hafizoglu@campus.tu-berlin.de
 
 ## Motivation
 
