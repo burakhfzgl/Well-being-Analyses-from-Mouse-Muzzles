@@ -50,7 +50,7 @@ LABEL_NAMES = {0: "not_impaired", 1: "impaired"}
 class BalancedDeviceConfig:
     """Settings for the balanced device experiment."""
 
-    organized_dir: Path = MOUSE_DATASET_DIR / "images_perfect_organized"
+    organized_dir: Path = MOUSE_DATASET_DIR / "Cropped_images"
     split_csv: Path = MOUSE_DATASET_DIR / "balanced_device_split.csv"
     checkpoint: Path = MODELS_DIR / "resnet18_balanced_device.pt"
     output_dir: Path = REPORTS_DIR / "balanced_device"
@@ -274,7 +274,7 @@ def build_subset_class_split(config: BalancedDeviceConfig, rng: np.random.Genera
         raise ValueError(
             "The organized cropped dataset is not ready for a balanced split.\n"
             "Run scripts/data_processing/prepare_organized_dataset.py and ensure "
-            "each subset/class folder under images_perfect_organized has images:\n"
+            "each subset/class folder under Cropped_images has images:\n"
             f"{details}"
         )
 

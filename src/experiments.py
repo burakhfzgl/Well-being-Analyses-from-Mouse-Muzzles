@@ -23,7 +23,7 @@ ARTICLE_MODELS_DIR = MODELS_DIR / "article_experiments"
 ARTICLE_SPLITS_DIR = MOUSE_DATASET_DIR / "article_experiment_splits"
 
 BASE_SETTINGS = {
-    "organized_dir": MOUSE_DATASET_DIR / "images_perfect_organized",
+    "organized_dir": MOUSE_DATASET_DIR / "Cropped_images",
     "samples_per_bucket": None,
     "train_fraction": 0.70,
     "val_fraction": 0.15,

@@ -129,20 +129,33 @@ python -m pip install -r requirements.txt
 
 ### Dataset
 
-Image data is not committed. Place files under:
+Image data is not committed. This project uses **two** image roots:
+
+| Role | Download | Local path |
+|---|---|---|
+| Cropped muzzles | [Cropped_images.rar (TU Berlin Cloud)](https://tubcloud.tu-berlin.de/s/RR5qtwfatPn7bF2) | `dataset/mouse_dataset/Cropped_images/` |
+| Full-face images | [DepositOnce](https://depositonce.tu-berlin.de/items/d2f955f2-8811-4976-86ae-00b04ebf37dd) | `dataset/mouse_dataset/images_mgs/` |
+
+Expected layout (only what the training code uses):
 
 ```text
 dataset/mouse_dataset/
-├── MouseGrimaceFaces_main.csv
 ├── MouseGrimaceFaces_mgs.csv
-├── images_mgs/          # Full images
-└── images_perfect/      # Cropped images
+├── MouseGrimaceFaces_main.csv
+├── Cropped_images/              # AW|JW|KH|LW|MR / impaired|not_impaired / *.jpg
+├── images_mgs/                  # flat full-face JPGs (same filenames as crops)
+└── article_experiment_splits/   # auto-created / reused held-out splits
 ```
 
-Then prepare and verify:
+**How crops and full images are linked:** crop runs read
+`Cropped_images/<subset>/<class>/<id>.jpg`. Full-image runs remap the same
+`<id>.jpg` into `images_mgs/<id>.jpg`. Filenames must match exactly.
+
+More detail: [`dataset/README.md`](dataset/README.md).
+
+Verify after placing the data:
 
 ```bash
-python main.py --mode prepare
 python main.py --mode check
 ```
 

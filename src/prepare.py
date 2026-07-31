@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from src.preprocess import print_perfect_analysis_summary, run_perfect_analysis
 from src.paths import (
+    CROPPED_IMAGES_DIR,
     IMAGES_PERFECT_DIR,
     IMAGES_PERFECT_LABELS_CSV,
-    IMAGES_PERFECT_ORGANIZED_DIR,
     MGS_CSV,
 )
 
@@ -17,11 +17,11 @@ def run_prepare() -> None:
         MGS_CSV,
         IMAGES_PERFECT_DIR,
         IMAGES_PERFECT_LABELS_CSV,
-        IMAGES_PERFECT_ORGANIZED_DIR,
+        CROPPED_IMAGES_DIR,
     )
 
     print(f"Analysis CSV: {IMAGES_PERFECT_LABELS_CSV.resolve()}")
-    print(f"Organized dataset: {IMAGES_PERFECT_ORGANIZED_DIR.resolve()}")
+    print(f"Organized dataset: {CROPPED_IMAGES_DIR.resolve()}")
     print()
     print_perfect_analysis_summary(summary)
     print()

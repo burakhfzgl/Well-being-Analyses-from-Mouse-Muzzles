@@ -12,7 +12,9 @@ MAIN_CSV = MOUSE_DATASET_DIR / "MouseGrimaceFaces_main.csv"
 IMAGES_MGS_DIR = MOUSE_DATASET_DIR / "images_mgs"
 IMAGES_PERFECT_DIR = MOUSE_DATASET_DIR / "images_perfect"
 IMAGES_PERFECT_LABELS_CSV = MOUSE_DATASET_DIR / "images_perfect_labels.csv"
-IMAGES_PERFECT_ORGANIZED_DIR = MOUSE_DATASET_DIR / "images_perfect_organized"
+CROPPED_IMAGES_DIR = MOUSE_DATASET_DIR / "Cropped_images"
+# Backward-compatible alias
+IMAGES_PERFECT_ORGANIZED_DIR = CROPPED_IMAGES_DIR
 
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 MODELS_DIR = OUTPUTS_DIR / "models"

@@ -10,7 +10,7 @@ from PIL import Image
 from src.paths import (
     IMAGES_MGS_DIR,
     IMAGES_PERFECT_DIR,
-    IMAGES_PERFECT_ORGANIZED_DIR,
+    CROPPED_IMAGES_DIR,
     MAIN_CSV,
     MGS_CSV,
     MOUSE_DATASET_DIR,
@@ -59,22 +59,22 @@ def run_check() -> None:
         image = image.convert("RGB")
         print(f"Sample crop: {sample.name} size={image.size}")
 
-    if IMAGES_PERFECT_ORGANIZED_DIR.is_dir():
+    if CROPPED_IMAGES_DIR.is_dir():
         bucket_counts = []
         for subset in SUBSETS:
             for class_name in CLASSES:
-                folder = IMAGES_PERFECT_ORGANIZED_DIR / subset / class_name
+                folder = CROPPED_IMAGES_DIR / subset / class_name
                 count = len(list(folder.glob("*.jpg"))) if folder.is_dir() else 0
                 bucket_counts.append((f"{subset}/{class_name}", count))
-        print("\nOrganized dataset buckets:")
+        print("\nCropped dataset buckets:")
         for name, count in bucket_counts:
             print(f"  {name}: {count}")
         empty = [name for name, count in bucket_counts if count == 0]
         if empty:
-            print("\nWarning: empty organized buckets found. Run: python main.py --mode prepare")
+            print("\nWarning: empty cropped buckets found. Run: python main.py --mode prepare")
     else:
         print(
-            f"\nOrganized dataset not found at {IMAGES_PERFECT_ORGANIZED_DIR}. "
+            f"\nCropped dataset not found at {CROPPED_IMAGES_DIR}. "
             "Run: python main.py --mode prepare"
         )
 
