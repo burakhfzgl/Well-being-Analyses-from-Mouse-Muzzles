@@ -48,10 +48,10 @@ Held-out test metrics from the final article tables (`results/part1_results.csv`
 | ResNet18 | crop | light | 0.759 | 0.759 | 0.759 | 0.852 |
 | ResNet18 | crop | none | 0.737 | 0.737 | 0.737 | 0.820 |
 
-### Part 2: targeted tuning
+### Part 2: Targeted Tuning
 
 | Model | Input | LR | Dropout | Frozen | Accuracy | Recall | Macro-F1 | ROC-AUC |
-|---|---|---|---:|---:|---|---:|---:|---:|---:|
+|-------|-------|----|---------|--------|---------:|-------:|---------:|--------:|
 | ResNet18 | full | 5e-5 | 0.3 | no | 0.838 | 0.838 | 0.838 | 0.883 |
 | ConvNeXt-Tiny | crop | 1e-4 | 0.0 | no | 0.812 | 0.812 | 0.812 | 0.857 |
 | ConvNeXt-Tiny | crop | 5e-5 | 0.3 | no | 0.805 | 0.804 | 0.804 | 0.886 |
