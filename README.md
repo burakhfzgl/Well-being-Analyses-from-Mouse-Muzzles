@@ -149,6 +149,7 @@ Image data is not committed. This project uses **two** image roots:
 | Cropped muzzles | [Cropped_images.rar (TU Berlin Cloud)](https://tubcloud.tu-berlin.de/s/RR5qtwfatPn7bF2) | `dataset/mouse_dataset/Cropped_images/` |
 | Full-face images | [DepositOnce](https://depositonce.tu-berlin.de/items/d2f955f2-8811-4976-86ae-00b04ebf37dd) | `dataset/mouse_dataset/images_mgs/` |
 
+After download the images from TU Berlin Cloud, you have to rename the folder to Cropped_images
 Expected layout (only what the training code uses):
 
 ```text
