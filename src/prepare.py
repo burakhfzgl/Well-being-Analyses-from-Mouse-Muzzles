@@ -1,26 +1,32 @@
-"""Prepare organized crop dataset from MGS labels."""
+"""Prepare organized crop dataset from MGS labels (optional rebuild step)."""
 
 from __future__ import annotations
 
+from src.paths import CROPPED_IMAGES_DIR, MOUSE_DATASET_DIR, MGS_CSV
 from src.preprocess import print_perfect_analysis_summary, run_perfect_analysis
-from src.paths import (
-    CROPPED_IMAGES_DIR,
-    IMAGES_PERFECT_DIR,
-    IMAGES_PERFECT_LABELS_CSV,
-    MGS_CSV,
-)
+
+# Only needed when rebuilding Cropped_images from raw flat crops.
+IMAGES_PERFECT_DIR = MOUSE_DATASET_DIR / "images_perfect"
+LABELS_CSV = MOUSE_DATASET_DIR / "images_perfect_labels.csv"
 
 
 def run_prepare() -> None:
-    """Build labels CSV and subset/class organized folders."""
+    """Build labels CSV and subset/class folders under Cropped_images."""
+    if not IMAGES_PERFECT_DIR.is_dir():
+        raise FileNotFoundError(
+            f"Raw crop source not found: {IMAGES_PERFECT_DIR}\n"
+            "If you already downloaded Cropped_images, skip prepare and run:\n"
+            "  python main.py --mode check"
+        )
+
     df, summary = run_perfect_analysis(
         MGS_CSV,
         IMAGES_PERFECT_DIR,
-        IMAGES_PERFECT_LABELS_CSV,
+        LABELS_CSV,
         CROPPED_IMAGES_DIR,
     )
 
-    print(f"Analysis CSV: {IMAGES_PERFECT_LABELS_CSV.resolve()}")
+    print(f"Analysis CSV: {LABELS_CSV.resolve()}")
     print(f"Organized dataset: {CROPPED_IMAGES_DIR.resolve()}")
     print()
     print_perfect_analysis_summary(summary)

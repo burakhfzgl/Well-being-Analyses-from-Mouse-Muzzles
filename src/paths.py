@@ -5,17 +5,15 @@ from pathlib import Path
 # src/paths.py -> repo root
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
+# Dataset (see dataset/README.md)
 MOUSE_DATASET_DIR = PROJECT_ROOT / "dataset" / "mouse_dataset"
-
 MGS_CSV = MOUSE_DATASET_DIR / "MouseGrimaceFaces_mgs.csv"
 MAIN_CSV = MOUSE_DATASET_DIR / "MouseGrimaceFaces_main.csv"
-IMAGES_MGS_DIR = MOUSE_DATASET_DIR / "images_mgs"
-IMAGES_PERFECT_DIR = MOUSE_DATASET_DIR / "images_perfect"
-IMAGES_PERFECT_LABELS_CSV = MOUSE_DATASET_DIR / "images_perfect_labels.csv"
 CROPPED_IMAGES_DIR = MOUSE_DATASET_DIR / "Cropped_images"
-# Backward-compatible alias
-IMAGES_PERFECT_ORGANIZED_DIR = CROPPED_IMAGES_DIR
+IMAGES_MGS_DIR = MOUSE_DATASET_DIR / "images_mgs"
+ARTICLE_SPLITS_DIR = MOUSE_DATASET_DIR / "article_experiment_splits"
 
+# Run artifacts
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 MODELS_DIR = OUTPUTS_DIR / "models"
 FIGURES_DIR = OUTPUTS_DIR / "figures"

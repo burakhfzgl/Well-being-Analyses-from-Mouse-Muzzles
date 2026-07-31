@@ -9,7 +9,14 @@ from typing import Iterable
 
 import pandas as pd
 
-from src.paths import FIGURES_DIR, IMAGES_MGS_DIR, MODELS_DIR, MOUSE_DATASET_DIR, REPORTS_DIR
+from src.paths import (
+    ARTICLE_SPLITS_DIR,
+    CROPPED_IMAGES_DIR,
+    FIGURES_DIR,
+    IMAGES_MGS_DIR,
+    MODELS_DIR,
+    REPORTS_DIR,
+)
 from src.train import (
     BalancedDeviceConfig,
     build_balanced_split,
@@ -20,10 +27,9 @@ from src.train import (
 ARTICLE_REPORTS_DIR = REPORTS_DIR / "article_experiments"
 ARTICLE_FIGURES_DIR = FIGURES_DIR / "article_experiments"
 ARTICLE_MODELS_DIR = MODELS_DIR / "article_experiments"
-ARTICLE_SPLITS_DIR = MOUSE_DATASET_DIR / "article_experiment_splits"
 
 BASE_SETTINGS = {
-    "organized_dir": MOUSE_DATASET_DIR / "Cropped_images",
+    "organized_dir": CROPPED_IMAGES_DIR,
     "samples_per_bucket": None,
     "train_fraction": 0.70,
     "val_fraction": 0.15,

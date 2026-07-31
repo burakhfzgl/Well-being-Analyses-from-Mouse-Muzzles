@@ -36,7 +36,15 @@ from sklearn.calibration import calibration_curve
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 
-from src.paths import FIGURES_DIR, IMAGENET_MEAN, IMAGENET_STD, MODELS_DIR, MOUSE_DATASET_DIR, REPORTS_DIR
+from src.paths import (
+    ARTICLE_SPLITS_DIR,
+    CROPPED_IMAGES_DIR,
+    FIGURES_DIR,
+    IMAGENET_MEAN,
+    IMAGENET_STD,
+    MODELS_DIR,
+    REPORTS_DIR,
+)
 from src.device import get_device
 from src.model import build_model
 from src.reproducibility import set_seed
@@ -50,8 +58,8 @@ LABEL_NAMES = {0: "not_impaired", 1: "impaired"}
 class BalancedDeviceConfig:
     """Settings for the balanced device experiment."""
 
-    organized_dir: Path = MOUSE_DATASET_DIR / "Cropped_images"
-    split_csv: Path = MOUSE_DATASET_DIR / "balanced_device_split.csv"
+    organized_dir: Path = CROPPED_IMAGES_DIR
+    split_csv: Path = ARTICLE_SPLITS_DIR / "heldout_subset_class_crop.csv"
     checkpoint: Path = MODELS_DIR / "resnet18_balanced_device.pt"
     output_dir: Path = REPORTS_DIR / "balanced_device"
     figures_dir: Path = FIGURES_DIR / "balanced_device"
